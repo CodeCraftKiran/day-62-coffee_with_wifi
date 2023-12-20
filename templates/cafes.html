@@ -1,34 +1,25 @@
 {% extends 'base.html' %}
-{% block title %}Restaurants{% endblock %}
-{% block content %}
+{% block title %}All Cafes{% endblock %}
 
+{% block content %}
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-
       <h1>All Cafes</h1>
 
-	  <table class="table table-dark table-striped table-hover">
-          <tr>
-              {% for lines_title in range(0, cafes_len_horizontal): %}
-                <th>{{ cafes[0][lines_title] }}</th>
-              {% endfor %}
-          </tr>
-
-            {% for vertical in range(0, cafes_len_vertical): %}
-            <tr>
-              {% for horizontal in range(0, cafes_len_horizontal): %}
-                    <td>
-                        {% if horizontal == 1: %}
-                            <a href="{{ cafes[vertical][horizontal] }}">Maps Link</a>
-                        {% else: %}
-                            {{ cafes[vertical][horizontal] }}
-                        {% endif %}
-                    </td>
-                {% endfor %}
-            </tr>
-              {% endfor %}
-  	  </table>
+      <table class="table" style="color: white">
+        {% for row in cafes %}
+        <tr>
+          {% for item in row %}
+            {% if item[0:4] == "http" %}
+              <td><a href="{{ item }}">Maps Link</a></td>
+            {% else %}
+              <td>{{ item }}</td>
+            {% endif %}
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
 
       <p><a href="{{ url_for('home') }}">Return to index page</a></p>
 
