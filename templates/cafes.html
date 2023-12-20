@@ -14,19 +14,20 @@
                 <th>{{ cafes[0][lines_title] }}</th>
               {% endfor %}
           </tr>
+
             {% for vertical in range(0, cafes_len_vertical): %}
             <tr>
               {% for horizontal in range(0, cafes_len_horizontal): %}
                     <td>
-                        {{ cafes[vertical][horizontal] }}
+                        {% if horizontal == 1: %}
+                            <a href="{{ cafes[vertical][horizontal] }}">Maps Link</a>
+                        {% else: %}
+                            {{ cafes[vertical][horizontal] }}
+                        {% endif %}
                     </td>
                 {% endfor %}
             </tr>
               {% endfor %}
-
-          <!-- This is where you will write the code to render a Bootstrap
-          Table that contains all the information from the
-          cafe-data.csv file. -->
   	  </table>
 
       <p><a href="{{ url_for('home') }}">Return to index page</a></p>

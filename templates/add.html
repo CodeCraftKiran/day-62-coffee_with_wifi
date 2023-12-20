@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
-<!--Don't forget your import here-->
-<!--{% from 'bootstrap5/form.html' import render_form %}-->
+{% from 'bootstrap5/form.html' import render_form %}
 {% block title %}Add A New Cafe{% endblock %}
 
 {% block content %}
@@ -15,9 +14,8 @@
 <!--        <p>-->
 <!--          {{ form.cafe.label }} <br> {{ form.cafe(size=60) }}-->
 <!--        </p>-->
-
 <!--      </form>-->
-      {{ render_form(form)}}
+      {{ render_form(form, novalidate=True)}}
 
 	  <p class="space-above"><a href="{{ url_for('cafes') }}">See all cafes</a></p>
 
